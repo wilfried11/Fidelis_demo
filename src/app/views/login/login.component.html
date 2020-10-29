@@ -1,0 +1,91 @@
+<div class="container">
+  <!-- <div class="col text-center"> -->
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Connection</h4>
+        </div>
+        <div class="modal-body mx-3">
+
+
+          <!-- Default form login -->
+          <!-- <form class="text-center border border-light p-6" fxLayoutAlign="center center">
+
+  <p class="h4 mb-4">Connection</p> -->
+  <div class="md-form mb-5">
+    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+    <input type="email" id="orangeForm-email" class="form-control"
+           mdbInput mdbValidate>
+    <label for="orangeForm-email">Email</label>
+    <!-- <mdb-error
+      *ngIf="signupFormModalEmail.invalid && (signupFormModalEmail.dirty || signupFormModalEmail.touched)">Input
+      invalid
+    </mdb-error>
+    <mdb-success
+      *ngIf="signupFormModalEmail.valid && (signupFormModalEmail.dirty || signupFormModalEmail.touched)">Input
+      valid
+    </mdb-success> -->
+  </div>
+
+  <div class="md-form mb-4">
+    <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+    <input type="password" id="orangeForm-pass" class="form-control"
+           mdbInput mdbValidate>
+    <label for="orangeForm-pass">Mot de passe</label>
+    <!-- <mdb-error
+      *ngIf="signupFormModalPassword.invalid && (signupFormModalPassword.dirty || signupFormModalPassword.touched)">
+      Input invalid
+    </mdb-error>
+    <mdb-success
+      *ngIf="signupFormModalPassword.valid && (signupFormModalPassword.dirty || signupFormModalPassword.touched)">
+      Input valid
+    </mdb-success> -->
+  </div>
+        
+          <div class="d-flex justify-content-around">
+            <div>
+              <!-- Remember me -->
+              <mdb-checkbox [default]="true">Se rappeler de moi</mdb-checkbox>
+            </div>
+            <div>
+              <!-- Forgot password -->
+              <a href="">Mot de passe oublier?</a>
+            </div>
+          </div>
+
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn color="info" block="true" class="my-4" type="submit">Login</button>
+         
+          <!-- Sign in button -->
+
+
+          <!-- Register -->
+          <p>Pas de compte?
+            <a [routerLink]="['/register']" routerLinkActive="active">S'inscrire</a>
+          </p>
+          <br>
+          <p>Ou connectez-vous avec:</p><br>
+
+          <a type="button" class="light-blue-text mx-2">
+            <mdb-icon fab icon="facebook"></mdb-icon>
+          </a>
+          <a type="button" class="light-blue-text mx-2">
+            <mdb-icon fab icon="twitter"></mdb-icon>
+          </a>
+          <a type="button" class="light-blue-text mx-2">
+            <mdb-icon fab icon="linkedin"></mdb-icon>
+          </a>
+          <a type="button" class="light-blue-text mx-2">
+            <mdb-icon fab icon="github"></mdb-icon>
+          </a>
+        </div>
+          <!-- Social login -->
+        
+          <!-- </form> -->
+          <!-- Default form login -->
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+<!-- Full Page Intro -->

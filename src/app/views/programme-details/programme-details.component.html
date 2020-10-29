@@ -1,0 +1,356 @@
+<!-- <div class="container text-center text-md-left mt-5">
+-->
+  <div class="row mt-3"> 
+  <!-- Entete detail -->
+    <!-- News jumbotron -->
+    <div class="jumbotron text-center hoverable p-4">
+
+      <!-- Grid row -->
+      <div class="row">
+    
+        <!-- Grid column -->
+        <div class="col-md-6 offset-md-1 mx-3 my-3">
+    
+          <!-- Featured image -->
+          <div class="view overlay waves-light" mdbWavesEffect>
+            
+            <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" alt="zoom" class="img-fluid">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+        </div>
+        <!-- Grid column -->
+    
+        <!-- Grid column -->
+        <div class="col-md-5 text-md-left ml-3 mt-3">
+  
+          
+          <a href="#!" class="green-text">
+            <h6 class="h6 pb-1"><mdb-icon fas icon="desktop" class="pr-1"></mdb-icon> Jeux</h6>
+          </a>
+    
+          <h4 class="h4 mb-4">MTN Quiz</h4>
+    
+          <p class="font-weight-normal">MTN MEGA PROMO is the new SMS Quiz launched by MTN Cameroon, which allows you to win up to 5,000,000 FCFA 
+            from 08 November to 08 December.To participate in the game, the MTNC subscriber must send by SMS “OK” to 8799 or reply via any other 
+            subscription channel through which MTN Cameroon advertises the service following a message inviting the subscriber to subscribe.
+          </p>
+         
+          <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-6">
+                    <p class="text-left">
+                        Du <mdb-icon far icon="clock" class="pr-1"></mdb-icon>12/10/2020
+                    </p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-6">
+                    <p class="text-right">
+                        Au <mdb-icon far icon="clock" class="pr-1"></mdb-icon>12/12/2020
+                    </p>
+                </div>
+            </div>
+          </div>
+          <div class="d-inline p-2 text-white">
+            <button mdbBtn (click)="gotoHome()" type="button" size="sm" color="blue-grey" mdbWavesEffect>
+              <mdb-icon fas icon="back" class="mr-1"></mdb-icon>Retour
+            </button>
+            <button mdbBtn type="button" size="sm" color="success" mdbWavesEffect>
+              <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>12 Souscrire
+            </button>
+            <button mdbBtn type="button" size="sm" color="danger" mdbWavesEffect>
+              <mdb-icon fas icon="heart" class="mr-1"></mdb-icon>29 Like
+            </button>
+            <button mdbBtn type="button" size="sm" color="default" mdbWavesEffect>
+              <mdb-icon fas icon="share" class="mr-1"></mdb-icon>Partager
+            </button>
+          </div>
+          
+    
+        </div>
+        <!-- Grid column -->
+    
+      </div>
+      <!-- Grid row -->
+    
+    </div>
+    <!-- News jumbotron -->
+
+  <div class="container" id="tabs">
+      
+    
+      <dx-tab-panel #tabPanel [dataSource]="tabsItems" [selectedIndex]="0" [loop]="false"
+      [animationEnabled]="true" [swipeEnabled]="true">
+
+      <div *dxTemplate="let item of 'tab1'">
+        <dx-scroll-view #scrollView
+        id="scrollview"
+        [scrollByContent]="true"
+        [scrollByThumb]="true"
+        [bounceEnabled]="true"
+        reachBottomText="Updating..."
+       >
+       <!-- [showScrollbar]= 'always' -->
+       <h2>
+        Eligibilite
+      </h2>
+      <div class="row">
+        <div class="col-4 col-sm-6 col-lg-6">
+          <mdb-card class="text-center">
+            <mdb-card-header>Profile</mdb-card-header>
+            <mdb-card-body>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Voyages
+                  <mdb-badge pill="true" primary="true">14</mdb-badge>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Achat 
+                  <mdb-badge pill="true" primary="true">+20.000</mdb-badge>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Forfait internet
+                  <mdb-badge pill="true" primary="true">+15.000</mdb-badge>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Jeunes de Douala
+                  <mdb-badge pill="true" primary="true"></mdb-badge>
+                </li>
+              </ul>
+              
+            </mdb-card-body>
+            <mdb-card-footer class="text-muted">11</mdb-card-footer>
+          </mdb-card>
+          
+          </div>
+          <div class="col-4 col-sm-6 col-lg-6">
+            <mdb-card class="text-center">
+              <mdb-card-header>Status client</mdb-card-header>
+              <mdb-card-body>
+                <ul class="list-group list-group-flush">
+                  <li *ngFor="let membership of list_membership" class="list-group-item">
+                    {{membership.srv_prov_membership_categ}}
+                  </li>
+                </ul>
+                
+              </mdb-card-body>
+              <mdb-card-footer class="text-muted">11</mdb-card-footer>
+            </mdb-card>
+           
+          </div>
+          <hr class="my-4">
+          <div class="col-4 col-sm-6 col-lg-6">
+            <mdb-card class="text-center">
+              <mdb-card-header>Enceintes, Magasins</mdb-card-header>
+              <mdb-card-body>
+                <ul class="list-group">
+                  <li *ngFor="let mrk_place of list_mrk_place" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{mrk_place.srv_prod_prov_mrk_place_name}}
+                  </li>
+                </ul>
+                
+              </mdb-card-body>
+              <mdb-card-footer class="text-muted">11</mdb-card-footer>
+            </mdb-card>
+            
+          </div>
+        </div>
+       </dx-scroll-view>
+       
+      </div>
+
+      <div *dxTemplate="let item of 'tab2'">
+        <dx-scroll-view #scrollView
+        id="scrollview"
+        [scrollByContent]="true"
+        [scrollByThumb]="true"
+        [bounceEnabled]="true"
+        reachBottomText="Updating..."
+       >
+       <h2>
+        Regles
+      </h2>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-12">
+          <mdb-card class="text-center">
+            <mdb-card-header>Total sur l'achat</mdb-card-header>
+            <mdb-card-body>
+              <table class="table table-striped">
+
+                <!--Table head-->
+                <thead>
+                    <tr>
+                        <th>Achat Min</th>
+                        <th>Achat Max</th>
+                        <th>Valeur en point</th>
+                    </tr>
+                </thead>
+                <!--Table head-->
+            
+                <!--Table body-->
+                <tbody>
+                    <tr *ngFor="let eligibility of eligibilities" class="table-info">
+                      
+                        <td>{{eligibility.pgrm_loyal_min}} FCA</td>
+                        <td>{{eligibility.pgrm_loyal_max}} FCA</td>
+                        <td>{{eligibility.pgrm_loyal_point}} Pts</td>
+                    </tr>
+                </tbody>
+                <!--Table body-->
+            
+            
+            </table>
+            <!--Table-->
+              </mdb-card-body>
+              </mdb-card>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-6 col-lg-12">
+            <mdb-card class="text-center">
+              <mdb-card-header>Palier sur total de l'achat</mdb-card-header>
+              <mdb-card-body>
+                <table class="table table-striped">
+  
+                  <!--Table head-->
+                  <thead>
+                      <tr>
+                          <th>Statut Client</th>
+                          <th>Palier</th>
+                          <th>Valeur en point</th>
+                      </tr>
+                  </thead>
+                  <!--Table head-->
+              
+                  <!--Table body-->
+                  <tbody>
+                      <tr *ngFor="let eligibility of eligibilities" class="table-info">
+                          
+                          <td>{{eligibility.pgrm_loyal_membership}}</td>
+                          <td>{{eligibility.pgrm_loyal_max}} FCA</td>
+                          <td>{{eligibility.pgrm_loyal_point}} Pts</td>
+                      </tr>
+                  </tbody>
+                  <!--Table body-->
+              
+              
+              </table>
+              <!--Table-->
+                </mdb-card-body>
+                </mdb-card>
+          </div>
+          </div> 
+          <div class="row">
+            <div class="col-12 col-sm-6 col-lg-12">
+              <mdb-card class="text-center">
+                <mdb-card-header>Par produit/Service/Categorie de produit et service</mdb-card-header>
+                <mdb-card-body>
+                  <table class="table table-striped">
+    
+                    <!--Table head-->
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Quantite</th>
+                            <th>Prix</th>
+                            <th>Valeur en point</th>
+                        </tr>
+                    </thead>
+                    <!--Table head-->
+                
+                    <!--Table body-->
+                    <tbody>
+                        <tr *ngFor="let eligibility of eligibilities" class="table-info">
+                           
+                            <td>{{eligibility.pgrm_loyal_prod_name}}</td>
+                            <td>{{eligibility.pgrm_loyal_prod_qte}}</td>
+                            <td>{{eligibility.pgrm_loyal_max}} FCA</td>
+                            <td>{{eligibility.pgrm_loyal_point}} Pts</td>
+                        </tr>
+                    </tbody>
+                    <!--Table body-->
+                
+                
+                </table>
+                <!--Table-->
+                  </mdb-card-body>
+                  </mdb-card>
+            </div>
+            </div> 
+       </dx-scroll-view>
+       
+      </div>
+
+      <div *dxTemplate="let item of 'tab3'">
+        <dx-scroll-view #scrollView
+        id="scrollview" width="100%" height="100%"
+        [scrollByContent]="true"
+        [scrollByThumb]="true"
+        [bounceEnabled]="true"
+        reachBottomText="Updating..."
+       >
+       <h2>
+        Recompense
+      </h2>
+      
+        <div class="row no-padding no-margin">
+         
+          <dx-data-grid [dataSource]="list_all_rewards" [allowColumnReordering]="true" [showBorders]="true"> 
+            <dxo-selection mode="single"></dxo-selection>
+          <dxi-column dataField="srv_prov_membership_categ" [groupIndex]="0" caption="Status Client" ></dxi-column>
+          <dxi-column dataField="Rewrd_patern_srv_prod_pgm_val" [groupIndex]="1" [customizeText]="pointsColumn_customizeText" caption="Valeur" ></dxi-column>
+          <dxi-column dataField="reward_type_lib" [groupIndex]="2" caption="Recompense" ></dxi-column>
+          <dxi-column dataField="Rewrd_patern_srv_prod_pgm_limit_montant" [customizeText]="currencyColumn_customizeText" caption="Montant"></dxi-column>
+          <dxi-column dataField="Rewrd_patern_srv_prod_pgm_val1" [customizeText]="percentColumn_customizeText" caption="Pourcentage"></dxi-column>
+          <dxi-column dataField="Rewrd_patern_srv_prod_pgm_limit_qte" caption="Quantite" ></dxi-column>
+          <dxi-column dataField="prod_serv_lib" caption="Produit/Service/Categorie"></dxi-column>
+          
+          <dxo-search-panel [visible]="true"></dxo-search-panel>
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping #expand [autoExpandAll]="false"></dxo-grouping>
+          </dx-data-grid>
+        
+        </div>
+    
+       </dx-scroll-view>
+       
+      </div>
+       <div *dxTemplate="let item of 'tab4'">
+        <dx-scroll-view #scrollView
+        id="scrollview"
+        [scrollByContent]="true"
+        [scrollByThumb]="true"
+        [bounceEnabled]="true"
+        reachBottomText="Updating..."
+       >
+       <h2>
+        Fournisseurs
+      </h2>
+      <mdb-card>
+        <mdb-card-header>Orange CM</mdb-card-header>
+        <mdb-card-body>
+          <blockquote class="blockquote mb-0">
+            <p>Operateur de telephonie mobile au Cameroun</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </mdb-card-body>
+      </mdb-card>
+      <mdb-card>
+        <mdb-card-header>Santa Lucia</mdb-card-header>
+        <mdb-card-body>
+          <blockquote class="blockquote mb-0">
+            <p>Complexe commerciale au Cameroun</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </mdb-card-body>
+      </mdb-card>
+       </dx-scroll-view>
+       
+      </div>
+     
+      </dx-tab-panel>
+     
+  </div>
+    </div>
+<!--</div>    -->

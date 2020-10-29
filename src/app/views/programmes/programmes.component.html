@@ -1,0 +1,567 @@
+<div class="container-fluid mt-5">
+    <h2>Programmes recents</h2>
+<mdb-carousel [animation]="'slide'" [ngSwitch]="carouselDisplayMode" [isControls]="true"
+    class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'">
+    <ng-container *ngSwitchCase="'single'">
+        <mdb-carousel-item *ngFor="let programme of programmes">
+            <mdb-card class="my-1">
+                <mdb-card-img [src]="programme.pgrm_loyal_img" alt="Card image cap"></mdb-card-img>
+                
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <h4 class="text-left">
+                                    {{programme.pgrm_loyal_lib}}
+                                </h4>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <p class="text-right">
+                                    <button mdbBtn type="button" size="sm" color="success" data-toggle="modal" data-target="#basicExample"
+                                    (click)="frame.show()" mdbWavesEffect>
+                                        <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Souscrire
+                                      </button>
+                                </p>
+                            </div>
+                        </div>
+                    </mdb-card-title>
+                   
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <p class="text-left">
+                                    Du <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_date_deb }}
+                                </p>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <p class="text-right">
+                                    Au <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_date_fin }}
+                                </p>
+                            </div>
+                        </div>
+
+                        
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <ul class="list-unstyled list-inline font-small mt-3">
+
+                                    <li class="list-inline-item pr-2">
+                                        <a href="#" class="red-text">
+                                            <mdb-icon far icon="heart" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_like }}
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item pr-2">
+                                        <a href="#" class="light-blue-text">
+                                            <mdb-icon fab icon="facebook-f" class="pr-1"> </mdb-icon>{{ programme.pgrm_loyal_users }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <a [routerLink]="['/programme-details',programme.pgrm_loyal_ID]" routerLinkActive="active" class="d-flex justify-content-end">
+                                    Voir Plus
+                                    <span>
+                                        <i class="fas fa-chevron-right pl-2"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </mdb-card-body>
+                <mdb-card-footer>
+                    <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{programme.srv_prod_prov_lib}}</a>
+                </mdb-card-footer>
+            </mdb-card>
+        </mdb-carousel-item>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'multiple'">
+        <mdb-carousel-item *ngFor="let item of slides; let i = index">
+            <div class="col-md-4" *ngFor="let programme of programmes; let cardIndex = index">
+                <mdb-card class="my-1">
+                    <mdb-card-img [src]="programme.pgrm_loyal_img" alt="Card image cap"></mdb-card-img>
+                   
+                    <mdb-card-body>
+                        <mdb-card-title>
+                            
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <h4 class="text-left">
+                                        {{programme.pgrm_loyal_lib}}
+                                    </h4>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <p class="text-right">
+                                        <button mdbBtn type="button" size="sm" color="success" data-toggle="modal" data-target="#basicExample"
+                                        (click)="frame.show()" mdbWavesEffect>
+                                            <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Souscrire
+                                          </button>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                        </mdb-card-title>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <p class="text-left">
+                                        Du <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_date_deb}}
+                                    </p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <p class="text-right">
+                                        Au <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_date_fin}}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <ul class="list-unstyled list-inline font-small mt-3">
+
+                                        <li class="list-inline-item pr-2">
+                                            <a href="#" class="red-text">
+                                                <mdb-icon far icon="heart" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_like}}
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item pr-2">
+                                            <a href="#" class="light-blue-text">
+                                                <mdb-icon fab icon="facebook-f" class="pr-1"> </mdb-icon>{{programme.pgrm_loyal_users}}
+                                            </a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <a [routerLink]="['/programme-details',programme.pgrm_loyal_ID]" routerLinkActive="active" class="d-flex justify-content-end">
+                                        Voir Plus
+                                        <span>
+                                            <i class="fas fa-chevron-right pl-2"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </mdb-card-body>
+                    <mdb-card-footer>
+                        <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{programme.srv_prod_prov_lib}}</a>
+                    </mdb-card-footer>
+                </mdb-card>
+            </div>
+        </mdb-carousel-item>
+    </ng-container>
+</mdb-carousel>
+</div>
+   <!-- select programme type-->
+   <div class="container-fluid mt-5">
+    <div class="flex-center flex-column">
+      <h1> Vous avez une preference ? choisissez votre type de programme</h1>
+      <hr>
+      <button mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect>Type de programme</button>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-5">
+    <h2>Programmes populaires</h2>
+  <!-- Programme    -->
+  <mdb-carousel [animation]="'slide'" [ngSwitch]="carouselDisplayMode" [isControls]="true"
+    class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'">
+    <ng-container *ngSwitchCase="'single'">
+        <mdb-carousel-item *ngFor="let programme of programmes">
+            <mdb-card class="my-1">
+                <mdb-card-img [src]="programme.pgrm_loyal_img" alt="Card image cap"></mdb-card-img>
+                
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <h4 class="text-left">
+                                    {{programme.pgrm_loyal_lib}}
+                                </h4>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <p class="text-right">
+                                    <button mdbBtn type="button" size="sm" color="success" data-toggle="modal" data-target="#basicExample"
+                                    (click)="frame.show()" mdbWavesEffect>
+                                        <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Souscrire
+                                      </button>
+                                </p>
+                            </div>
+                        </div>
+                    </mdb-card-title>
+                   
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <p class="text-left">
+                                    Du <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_date_deb }}
+                                </p>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <p class="text-right">
+                                    Au <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_date_fin }}
+                                </p>
+                            </div>
+                        </div>
+
+                        
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <ul class="list-unstyled list-inline font-small mt-3">
+
+                                    <li class="list-inline-item pr-2">
+                                        <a href="#" class="red-text">
+                                            <mdb-icon far icon="heart" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_like }}
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item pr-2">
+                                        <a href="#" class="light-blue-text">
+                                            <mdb-icon fab icon="facebook-f" class="pr-1"> </mdb-icon>{{ programme.pgrm_loyal_users }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <a [routerLink]="['/programme-details',programme.pgrm_loyal_ID]" routerLinkActive="active" class="d-flex justify-content-end">
+                                    Voir Plus
+                                    <span>
+                                        <i class="fas fa-chevron-right pl-2"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </mdb-card-body>
+                <mdb-card-footer>
+                    <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{programme.srv_prod_prov_lib}}</a>
+                </mdb-card-footer>
+            </mdb-card>
+        </mdb-carousel-item>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'multiple'">
+        <mdb-carousel-item *ngFor="let item of slides; let i = index">
+            <div class="col-md-4" *ngFor="let programme of programmes; let cardIndex = index">
+                <mdb-card class="my-1">
+                    <mdb-card-img [src]="programme.pgrm_loyal_img" alt="Card image cap"></mdb-card-img>
+                   
+                    <mdb-card-body>
+                        <mdb-card-title>
+                            
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <h4 class="text-left">
+                                        {{programme.pgrm_loyal_lib}}
+                                    </h4>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <p class="text-right">
+                                        <button mdbBtn type="button" size="sm" color="success" data-toggle="modal" data-target="#basicExample"
+                                        (click)="frame.show()" mdbWavesEffect>
+                                            <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Souscrire
+                                          </button>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                        </mdb-card-title>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <p class="text-left">
+                                        Du <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_date_deb}}
+                                    </p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <p class="text-right">
+                                        Au <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_date_fin}}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <ul class="list-unstyled list-inline font-small mt-3">
+
+                                        <li class="list-inline-item pr-2">
+                                            <a href="#" class="red-text">
+                                                <mdb-icon far icon="heart" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_like}}
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item pr-2">
+                                            <a href="#" class="light-blue-text">
+                                                <mdb-icon fab icon="facebook-f" class="pr-1"> </mdb-icon>{{programme.pgrm_loyal_users}}
+                                            </a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <a [routerLink]="['/programme-details',programme.pgrm_loyal_ID]" routerLinkActive="active" class="d-flex justify-content-end">
+                                        Voir Plus
+                                        <span>
+                                            <i class="fas fa-chevron-right pl-2"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </mdb-card-body>
+                    <mdb-card-footer>
+                        <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{programme.srv_prod_prov_lib}}</a>
+                    </mdb-card-footer>
+                </mdb-card>
+            </div>
+        </mdb-carousel-item>
+    </ng-container>
+</mdb-carousel>
+</div>
+<div class="container-fluid mt-5">
+    <h2>Programmes pres de chez vous</h2>
+  <!-- Programme    -->
+  <mdb-carousel [animation]="'slide'" [ngSwitch]="carouselDisplayMode" [isControls]="true"
+  class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'">
+  <ng-container *ngSwitchCase="'single'">
+      <mdb-carousel-item *ngFor="let programme of programmes">
+          <mdb-card class="my-1">
+              <mdb-card-img [src]="programme.pgrm_loyal_img" alt="Card image cap"></mdb-card-img>
+              
+              <mdb-card-body>
+                  <mdb-card-title>
+                      <div class="row">
+                          <div class="col-12 col-sm-6 col-lg-6">
+                              <h4 class="text-left">
+                                  {{programme.pgrm_loyal_lib}}
+                              </h4>
+                          </div>
+                          <div class="col-12 col-sm-6 col-lg-6">
+                              <p class="text-right">
+                                  <button mdbBtn type="button" size="sm" color="success" data-toggle="modal" data-target="#basicExample"
+                                  (click)="frame.show()" mdbWavesEffect>
+                                      <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Souscrire
+                                    </button>
+                              </p>
+                          </div>
+                      </div>
+                  </mdb-card-title>
+                 
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-12 col-sm-6 col-lg-6">
+                              <p class="text-left">
+                                  Du <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_date_deb }}
+                              </p>
+                          </div>
+                          <div class="col-12 col-sm-6 col-lg-6">
+                              <p class="text-right">
+                                  Au <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_date_fin }}
+                              </p>
+                          </div>
+                      </div>
+
+                      
+                      <div class="row">
+                          <div class="col-12 col-sm-6 col-lg-6">
+                              <ul class="list-unstyled list-inline font-small mt-3">
+
+                                  <li class="list-inline-item pr-2">
+                                      <a href="#" class="red-text">
+                                          <mdb-icon far icon="heart" class="pr-1"></mdb-icon>{{ programme.pgrm_loyal_like }}
+                                      </a>
+                                  </li>
+                                  <li class="list-inline-item pr-2">
+                                      <a href="#" class="light-blue-text">
+                                          <mdb-icon fab icon="facebook-f" class="pr-1"> </mdb-icon>{{ programme.pgrm_loyal_users }}
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="col-12 col-sm-6 col-lg-6">
+                              <a [routerLink]="['/programme-details',programme.pgrm_loyal_ID]" routerLinkActive="active" class="d-flex justify-content-end">
+                                  Voir Plus
+                                  <span>
+                                      <i class="fas fa-chevron-right pl-2"></i>
+                                  </span>
+                              </a>
+                          </div>
+                      </div>
+
+                  </div>
+
+              </mdb-card-body>
+              <mdb-card-footer>
+                  <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{programme.srv_prod_prov_lib}}</a>
+              </mdb-card-footer>
+          </mdb-card>
+      </mdb-carousel-item>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'multiple'">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+          <div class="col-md-4" *ngFor="let programme of programmes; let cardIndex = index">
+              <mdb-card class="my-1">
+                  <mdb-card-img [src]="programme.pgrm_loyal_img" alt="Card image cap"></mdb-card-img>
+                 
+                  <mdb-card-body>
+                      <mdb-card-title>
+                          
+                          <div class="row">
+                              <div class="col-12 col-sm-6 col-lg-6">
+                                  <h4 class="text-left">
+                                      {{programme.pgrm_loyal_lib}}
+                                  </h4>
+                              </div>
+                              <div class="col-12 col-sm-6 col-lg-6">
+                                  <p class="text-right">
+                                      <button mdbBtn type="button" size="sm" color="success" data-toggle="modal" data-target="#basicExample"
+                                      (click)="frame.show()" mdbWavesEffect>
+                                          <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Souscrire
+                                        </button>
+                                  </p>
+                              </div>
+                          </div>
+                          <hr>
+                      </mdb-card-title>
+
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-12 col-sm-6 col-lg-6">
+                                  <p class="text-left">
+                                      Du <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_date_deb}}
+                                  </p>
+                              </div>
+                              <div class="col-12 col-sm-6 col-lg-6">
+                                  <p class="text-right">
+                                      Au <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_date_fin}}
+                                  </p>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-12 col-sm-6 col-lg-6">
+                                  <ul class="list-unstyled list-inline font-small mt-3">
+
+                                      <li class="list-inline-item pr-2">
+                                          <a href="#" class="red-text">
+                                              <mdb-icon far icon="heart" class="pr-1"></mdb-icon>{{programme.pgrm_loyal_like}}
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item pr-2">
+                                          <a href="#" class="light-blue-text">
+                                              <mdb-icon fab icon="facebook-f" class="pr-1"> </mdb-icon>{{programme.pgrm_loyal_users}}
+                                          </a>
+                                      </li>
+                                     
+                                  </ul>
+                              </div>
+                              <div class="col-12 col-sm-6 col-lg-6">
+                                  <a [routerLink]="['/programme-details',programme.pgrm_loyal_ID]" routerLinkActive="active" class="d-flex justify-content-end">
+                                      Voir Plus
+                                      <span>
+                                          <i class="fas fa-chevron-right pl-2"></i>
+                                      </span>
+                                  </a>
+                              </div>
+                          </div>
+
+                      </div>
+
+                  </mdb-card-body>
+                  <mdb-card-footer>
+                      <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{programme.srv_prod_prov_lib}}</a>
+                  </mdb-card-footer>
+              </mdb-card>
+          </div>
+      </mdb-carousel-item>
+  </ng-container>
+</mdb-carousel>
+</div>
+
+
+<!-- popup login -->
+<div mdbModal #frame="mdbModal" style="width: 75%;" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Fidelis</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-6">
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+          <input type="email" id="defaultForm-email" class="form-control" mdbInput
+            mdbValidate>
+          <label for="defaultForm-email">Email</label>
+         
+        </div>
+
+        <div class="md-form mb-4">
+          <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+          <input type="password" id="defaultForm-pass" class="form-control"
+            mdbInput mdbValidate>
+          <label for="defaultForm-pass">Mot de pass</label>
+          
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button mdbBtn color="default" class="waves-light" mdbWavesEffect>Login</button>
+      </div>
+      </div>
+      
+        <div class="col-12 col-sm-6 col-lg-6">
+
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+              <input type="text" id="orangeForm-name" class="form-control" mdbInput mdbValidate>
+              <label for="orangeForm-name">Noms & Prenoms</label>
+              
+            </div>
+            <div class="md-form mb-5">
+              <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+              <input type="email" id="orangeForm-email" class="form-control"
+                     mdbInput mdbValidate>
+              <label for="orangeForm-email">Email</label>
+              
+            </div>
+            <div class="md-form mb-4">
+                <mdb-icon fas icon="phone" class="prefix grey-text"></mdb-icon>
+                <input type="text" id="orangeForm-pass" class="form-control"
+                       mdbInput mdbValidate>
+                <label for="orangeForm-pass">Telephone</label>
+                
+              </div>
+            <div class="md-form mb-4">
+              <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+              <input type="password" id="orangeForm-pass" class="form-control"
+                     mdbInput mdbValidate>
+              <label for="orangeForm-pass">Mot de passe</label>
+              
+            </div>
+    
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn color="deep-orange" class="waves-light" mdbWavesEffect>Sign up</button>
+          </div>
+
+        </div>
+        </div>
+    </div>
+  </div>
+</div>

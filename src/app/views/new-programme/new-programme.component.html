@@ -1,0 +1,686 @@
+<my_stepper #cdkStepper [linear]="false">
+
+  <cdk-step [editable]="true" [optional]="false">
+    <!-- [stepControl]="frmDetails" -->
+    <ng-template cdkStepLabel>
+      
+      <span>Element de base</span>
+    </ng-template>
+    
+      <div class="container">
+        <div class="col-12">
+          <!-- Nom & Description  -->
+          <div class="form-group">
+            <label for="inputAddress">Nom du programme</label>
+              <input mdbInput type="text" class="form-control" id="inputAddress" placeholder="Nom du programme">
+              
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Description du programme</label>
+              <input mdbInput type="text" class="form-control" id="inputAddress" placeholder="Description du programme">
+              
+            </div>
+          <!-- Date -->
+          <div class="form-row">
+              <!-- Default input -->
+              <div class="form-group col-md-6">
+                <label for="inputCity">Date debut</label>
+              <input mdbInput type="date" class="form-control" id="inputCity">
+             
+              </div>
+              <!-- Default input -->
+              <div class="form-group col-md-6">
+                <label for="inputZip">Date fin</label>
+              <input mdbInput type="date" class="form-control" id="inputZip">
+             
+              </div>
+          </div>
+          <h3>Type de points concerne par le programme</h3>
+          <div class="md-form">
+              <select class="browser-default custom-select">
+                  <option *ngFor="let type_point of list_type_point" [ngValue]="type_point">{{type_point.pgrm_param_type_point_lib}}</option>
+                  
+                </select>
+            </div>
+
+<!-- Coallition ?  -->
+      <!-- Default inline 1-->
+      <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" mdbInput>
+          <label class="custom-control-label" for="defaultInline1">Programme personnel</label>
+      </div>
+      
+      <!-- Default inline 2-->
+      <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" mdbInput>
+          <label class="custom-control-label" for="defaultInline2">Programme coallition</label>
+      </div>
+      </div>   
+        <footer class="page-footer">
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn type="button" [disabled]="false" color="default" mdbWavesEffect cdkStepperNext>Suivant
+              <mdb-icon fas icon="angle-double-right" class="ml-1"></mdb-icon>
+            </button>
+          </div>
+        </footer>
+      </div>
+
+  </cdk-step>
+  <cdk-step [editable]="true" [optional]="false">
+    <!-- using template -->
+    <ng-template cdkStepLabel>
+      <span>Eligibilite</span>
+    </ng-template>
+   
+      <div class="container">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-3">
+               <h3>Filtre</h3> 
+                <div class="col">
+                 <h4>Sexe</h4>  
+                        <!-- Mens -->
+              <div class="custom-control custom-radio">
+                <input type="radio" [(ngModel)]="filter_sexe" [value]="filter_sexe" class="custom-control-input" mdbInput>
+                <label class="custom-control-label" for="defaultUncheckedDisabled2">Hommes</label>
+              </div>
+
+              <!-- Women-->
+              <div class="custom-control custom-radio">
+                <input type="radio" [(ngModel)]="filter_sexe" [value]="!filter_sexe" class="custom-control-input" mdbInput>
+                <label class="custom-control-label" for="defaultCheckedDisabled2">Femmes</label>
+              </div>
+              <!-- Both-->
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" mdbInput>
+                <label class="custom-control-label" for="defaultUncheckedDisabled2">Tous</label>
+              </div>
+              <h4>Localite</h4> 
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Littoral</li>
+                <li class="list-group-item">Centre</li>
+                <li class="list-group-item">Ouest</li>
+                <li class="list-group-item">Nord-Ouest</li>
+                <li class="list-group-item">Sud-Ouest</li>
+              </ul>
+                </div>
+                </div>
+                <div class="col-9 grid">
+                  <div *ngFor="let profile_programme of list_profile_programme" placement="left" triggers="mouseenter:mouseleave" (click)="selectProfile(profile_programme)">
+                    <div class="content_grid">
+                      <mdb-card class="width_content_card">
+                        <mdb-card-body>
+                          <mdb-card-title>
+                            <h5>{{profile_programme.pgrm_param_profile_lib}}</h5>
+                          </mdb-card-title>
+                          <mdb-card-text>{{profile_programme.pgrm_param_profile_desc}}</mdb-card-text>
+                        </mdb-card-body>
+                        <mdb-card-footer><small class="text-muted">{{profile_programme.pgrm_param_profile_lib}}</small></mdb-card-footer>
+                      </mdb-card>
+                    </div>
+                    
+                </div>
+                    
+                </div>
+         </div>
+        </div>
+        <footer class="page-footer">
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn type="button" [disabled]="false" color="primary" mdbWavesEffect cdkStepperPrevious>
+              <mdb-icon fas icon="angle-double-left" class="mr-1"></mdb-icon>Precedent
+            </button>
+            <button mdbBtn type="button" [disabled]="false" color="default" mdbWavesEffect cdkStepperNext>Suivant
+              <mdb-icon fas icon="angle-double-right" class="ml-1"></mdb-icon>
+            </button>
+           
+          </div>
+        </footer>
+      </div>
+  </cdk-step>
+
+  <cdk-step [editable]="true" [optional]="false">
+    <!-- using template -->
+    <ng-template cdkStepLabel>
+      <span>Magasin</span>
+    </ng-template>
+   
+      <div class="container">
+       <div class="col-12">
+        <div class="row">
+          <div class="col-3">
+          <h3>Filtre</h3>
+          <h4>Type d'enceint</h4> 
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Magasin</li>
+              <li class="list-group-item">Agence</li>
+              <li class="list-group-item">Complexe</li>
+            </ul>
+          <h4>Localite</h4> 
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Littoral</li>
+              <li class="list-group-item">Centre</li>
+              <li class="list-group-item">Ouest</li>
+              <li class="list-group-item">Nord-Ouest</li>
+              <li class="list-group-item">Sud-Ouest</li>
+            </ul>
+              </div>
+              <div class="col-9 grid">
+                  
+                    <div *ngFor="let mrk_place of list_mrk_place" placement="left" triggers="mouseenter:mouseleave" (click)="selectMrkPlace(mrk_place)">
+                      <div class="content_grid">
+                      <mdb-card class="width_content_card">
+                        <mdb-card-body>
+                          <mdb-card-title>
+                            <h5>{{mrk_place.srv_prod_prov_mrk_place_name}}</h5>
+                          </mdb-card-title>
+                          <mdb-card-text>{{mrk_place.srv_prod_prov_mrk_place_type_lib}}</mdb-card-text>
+                        </mdb-card-body>
+                        <mdb-card-footer><small class="text-muted">{{mrk_place.srv_prod_prov_mrk_place_name}}</small></mdb-card-footer>
+                      </mdb-card>
+                    </div>
+                    </div>
+                   
+              </div>
+       </div>
+        </div>
+        <footer class="page-footer">
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn type="button" [disabled]="false" color="primary" mdbWavesEffect cdkStepperPrevious>
+              <mdb-icon fas icon="angle-double-left" class="mr-1"></mdb-icon>Precedent
+            </button>
+            <button mdbBtn type="button" [disabled]="false" color="default" mdbWavesEffect cdkStepperNext>Suivant
+              <mdb-icon fas icon="angle-double-right" class="ml-1"></mdb-icon>
+            </button>
+           
+          </div>
+        </footer>
+      </div>
+  </cdk-step>
+
+  <cdk-step [editable]="true" [optional]="false">
+    <!-- using template -->
+    <ng-template cdkStepLabel>
+      <span>Strategie</span>
+    </ng-template>
+   
+      <div class="container">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12">
+              <h2>Strategie de gains de points/Achat total</h2>
+             
+              <div class="form-row">
+                  <!-- Default input -->
+                  <div class="form-group col-md-3">
+                    <label for="inputCity">Achat min</label>
+                  <input mdbInput type="number" [(ngModel)]="achat_min" class="form-control" id="inputCity">
+                 
+                  </div>
+                  <!-- Default input -->
+                  <div class="form-group col-md-3">
+                    <label for="inputZip">Achat max</label>
+                  <input mdbInput type="number" [(ngModel)]="achat_max" class="form-control" id="inputZip">
+                 
+                  </div>
+                  <!-- Default input -->
+                  <div class="form-group col-md-3">
+                    <label for="inputZip">Point(s) gagne(s)</label>
+                  <input mdbInput type="number" [(ngModel)]="pts_granted" class="form-control" id="inputZip">
+                 
+                  </div>
+                  <div class="form-group col-md-3">
+                    <button mdbBtn color="info" block="true" (click)="addTotalAchat()" class="my-4">Ajouter</button>
+                  </div>
+                  <div class="row">
+                    <mdb-error
+                    *ngIf="">
+                    Desole, mais les valeurs entrees sont invalides,merci de les verifier.
+                  </mdb-error>
+                  </div>
+              </div>
+           
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                  <th class="text-center">Achat Min</th>
+                  <th class="text-center">Achat Max</th>
+                  <th class="text-center">Point(s) gagne(s)</th>
+                  <th class="text-center">Retirer</th>
+                </tr>
+                <tr *ngFor="let total_achat of list_trait_program_loyality_pts_service_product_total_achat;let id = index">
+                  <td>
+                    <span (keyup)="changeValue('Prix_min', $event)" (blur)="updateAchatTotalList(id,'Prix_min', $event)" contenteditable="true">{{total_achat.Prix_min}}</span>
+                  </td>
+                  <td>
+                    <span contenteditable="true" (keyup)="changeValue('Prix_max', $event)" (blur)="updateAchatTotalList(id,'Prix_max', $event)">{{total_achat.Prix_max}}</span>
+                  </td>
+                  <td>
+                    <span contenteditable="true" (keyup)="changeValue('nbre_pts_granted', $event)" (blur)="updateAchatTotalList(id,'nbre_pts_granted', $event)">{{total_achat.nbre_pts_granted}}</span>
+                  </td>
+                
+                  <td>
+                    <span class="table-remove">
+                      <button type="button" mdbBtn color="danger" rounded="true" (click)="removeTotalAchat(id)" size="sm" class="my-0">Retirer</button>
+                    </span>
+                  </td>
+                </tr>
+              </table>
+    
+          </div>
+            <div class="col-12">
+              <h2>Strategie de gains de points/Achat par palier total</h2>
+             
+              <div class="form-row">
+                  <!-- Default input -->
+                  <div class="form-group col-md-3">
+                    <label for="inputCity">Status Client</label>
+                    <select class="browser-default custom-select">
+                      <option *ngFor="let membership of list_membership" [ngValue]="membership">{{membership.srv_prov_membership_categ}}</option>
+                      
+                    </select>
+                  </div>
+                  <!-- Default input -->
+                  <div class="form-group col-md-3">
+                    <label for="inputZip">Palier</label>
+                  <input mdbInput type="number" [(ngModel)]="palier" class="form-control" id="inputZip">
+                 
+                  </div>
+                  <!-- Default input -->
+                  <div class="form-group col-md-3">
+                    <label for="inputZip">Point(s) gagne(s)</label>
+                  <input mdbInput type="number" [(ngModel)]="pts_granted_palier" class="form-control" id="inputZip">
+                 
+                  </div>
+                  <div class="form-group col-md-3">
+                    <button mdbBtn color="info" block="true" (click)="addAchatPalier()" class="my-4">Ajouter</button>
+                  </div>
+                  <div class="row">
+                    <mdb-error
+                    *ngIf="">
+                    Desole, mais les valeurs entrees sont invalides,merci de les verifier.
+                  </mdb-error>
+                  </div>
+              </div>
+           
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                  <th class="text-center">Status Client</th>
+                  <th class="text-center">Palier</th>
+                  <th class="text-center">Point(s) gagne(s)</th>
+                  <th class="text-center">Retirer</th>
+                </tr>
+                <tr *ngFor="let total_achat of list_trait_program_loyality_pts_service_product_achat_palier;let id = index">
+                  <td>
+                    <span (keyup)="changeValue('Prix_min', $event)" (blur)="updateAchatPalierList(id,'Prix_min', $event)" contenteditable="true">{{total_achat.Prix_min}}</span>
+                  </td>
+                  <td>
+                    <span contenteditable="true" (keyup)="changeValue('Prix_max', $event)" (blur)="updateAchatPalierList(id,'Prix_max', $event)">{{total_achat.Prix_max}}</span>
+                  </td>
+                  <td>
+                    <span contenteditable="true" (keyup)="changeValue('nbre_pts_granted', $event)" (blur)="updateAchatPalierList(id,'nbre_pts_granted', $event)">{{total_achat.nbre_pts_granted}}</span>
+                  </td>
+                
+                  <td>
+                    <span class="table-remove">
+                      <button type="button" mdbBtn color="danger" rounded="true" (click)="removeAchatPalier(id)" size="sm" class="my-0">Retirer</button>
+                    </span>
+                  </td>
+                </tr>
+              </table>
+    
+          </div>
+          </div>
+          <!-- Produits/services  -->
+          <h3>Par produits/Services</h3>
+        <div class="row">
+
+          <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 no-padding no-margin">
+            <div class="panel panel-primary outer">
+                <h3>
+                 Par Produit/Service
+                </h3>
+              <div class="panel-body">
+                <dx-tree-view rootValue="0"
+                [items]="list_products_services_of_program"
+                dataStructure="plain"
+                (onItemClick)="selectProductStrategy($event)"
+                parentIdExpr="categ_service_ID"
+                keyExpr="prod_serv_ID"
+                displayExpr="prod_serv_lib"
+                [selectionMode]="selectionModes[1]"
+                [selectNodesRecursive]="selectNodesRecursive"
+                [searchEnabled]="true" searchMode="contains">
+                 </dx-tree-view>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 no-padding no-margin">
+
+            <div class="clearfix">
+             
+            </div>
+            <div class="row no-padding no-margin">
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 no-padding no-margin">
+                <label class="label label_required_font no-margin no-padding">Quantite</label>
+                
+                <dx-number-box [min]="1" [(ngModel)]='product_nbre_pts_element' [disabled]="product_nbre_pts_element_state" [showSpinButtons]="true">
+                      <dx-validator>
+                        <dxi-validation-rule type="required" message="Valeur non prise en compte">
+                        </dxi-validation-rule>
+                      </dx-validator>
+              </dx-number-box>
+                
+              </div>
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 no-padding no-margin">
+                <label class="label label_required_font no-margin no-padding">Valeur en point</label>
+                
+                <dx-number-box [min]="0" [(ngModel)]='product_nbre_pts_granted' [disabled]="product_nbre_pts_granted_state" [showSpinButtons]="true">
+                      <dx-validator>
+                        <dxi-validation-rule type="required" message="Valeur non prise en compte">
+                        </dxi-validation-rule>
+                      </dx-validator>
+              </dx-number-box>
+                
+              </div>
+            </div>
+            <div class="clearfix">                           
+            </div>
+            <div class="row no-padding no-margin">
+              <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 no-padding no-margin">
+                <dx-button type="danger" 
+                  icon="fa fa-angle-double-left"></dx-button>
+              </div>
+              <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 no-padding no-margin">
+                <dx-button type="success" [disabled]="btn_add_strategy_product_state" 
+                  icon="fa fa-angle-double-right" (onClick)="addPointProductStrategy()"></dx-button>
+
+              </div>
+            </div>
+           
+          </div>
+          <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 no-padding no-margin">
+            <div class="panel panel-primary outer">
+              <div class="panel-heading headerbar-title">
+                <h3 class="text-center text-header-style-white">
+                  Produits/Services selectiones
+                </h3>
+              </div>
+              <div class="panel-body">
+                
+                <dx-data-grid [dataSource]="list_trait_program_loyality_pts_service_product" [showBorders]="true"> 
+                  <dxo-selection mode="single"></dxo-selection>
+                  <dxo-load-panel [enabled]="true"></dxo-load-panel>
+                  <dxi-column dataField="pgrm_loyal_serv_patern_type" caption="Produit/Service"></dxi-column>
+                  <dxi-column dataField="pgrm_loyal_serv_patern_min" caption="Quantite" ></dxi-column>
+                <dxi-column dataField="pgrm_loyal_serv_patern_val" [customizeText]="pointColumn_customizeText" caption="Valeur"></dxi-column>
+                
+                </dx-data-grid>
+              </div>
+            </div>
+
+          </div>
+        </div> 
+<!-- ./Produits/sevices  -->
+     <!-- Produit par intervalle de prix -->
+     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <h3>Par intervalle de produit/service</h3>  
+      <div class="clearfix"> </div>
+     </div>
+      <div class="row no-padding no-margin">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 no-padding no-margin">
+          <dx-range-selector title="Selectionnez l'intervalle de prix"
+          [dataSource]="list_products_services_interval"
+          dataSourceField="prod_serv_price"
+          (onValueChanged)="onValueChangedProdInterval($event)">
+          <dxo-margin [top]="15"></dxo-margin>
+          <dxo-scale [startValue]="min_intervalle_prix" [endValue]="max_intervalle_prix" [tickInterval]="1000" [minorTickInterval]="500">
+            <!-- [startValue]="min_intervalle_prix" [endValue]="max_intervalle_prix" -->
+              <dxo-label format="decimal"></dxo-label>
+              <dxo-minor-tick [visible]="false"></dxo-minor-tick>
+          </dxo-scale>
+          <dxo-behavior callValueChanged="onMoving"></dxo-behavior>
+      </dx-range-selector>
+        </div>
+      </div>
+      <div class="row no-padding no-margin">
+        <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 no-padding no-margin">
+          <div class="panel panel-primary outer">
+            
+              <h3>
+               Produits/Services selectiones
+              </h3>
+            
+            <div class="panel-body">
+              <dx-tree-view rootValue="0"
+              showCheckBoxesMode="normal"
+              [items]="list_products_services_interval"
+              dataStructure="plain"
+              parentIdExpr="categ_service_ID"
+              keyExpr="prod_serv_ID"
+              displayExpr="prod_serv_lib"
+              selectAllEnabled = "false"
+              [selectionMode]="selectionModes[0]"
+              [selectNodesRecursive]="selectNodesRecursive"
+              [searchEnabled]="true" searchMode="contains"
+              (onItemSelectionChanged)="selectionChanged($event)"
+              ></dx-tree-view>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 no-padding no-margin">
+
+          <div class="clearfix">
+           
+          </div>
+          <div class="row no-padding no-margin">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 no-padding no-margin">
+              <label class="label label_required_font no-margin no-padding">Point(s) gagne(s)</label>
+              
+              <dx-number-box [min]="1" [disabled]='min_max_intervalle_prix'
+              [(ngModel)]='nbre_pts_granted_intervalle_prix' [showSpinButtons]="true">
+                    <dx-validator>
+                      <dxi-validation-rule type="required" message="Valeur non pris en charge">
+                      </dxi-validation-rule>
+                    </dx-validator>
+            </dx-number-box>
+          </div>
+          </div>
+          <div class="clearfix">                           
+          </div>
+          <div class="row no-padding no-margin">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 no-padding no-margin">
+              <dx-button type="danger" [disabled]='btn_delete_intervalle_prix_state' icon="fa fa-angle-double-left"></dx-button>
+            </div>
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 no-padding no-margin">
+              <dx-button type="success" icon="fa fa-angle-double-right" [disabled]='btn_new_intervalle_prix_state'
+               (onClick)="addPointIntervalProductStrategy()"></dx-button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 no-padding no-margin">
+          <div class="panel panel-primary outer">
+            <div class="panel-heading headerbar-title">
+              <h3>
+                Produits/Services selectiones
+              </h3>
+            </div>
+            <div class="panel-body">
+              <dx-data-grid [dataSource]="list_products_services_interval_selected" 
+              (onSelectionChanged)="selectProductIntervalStrategyToRemove($event)" [showBorders]="true"> 
+                <dxo-selection mode="multiple"></dxo-selection>
+                <dxo-load-panel [enabled]="true"></dxo-load-panel>
+                <dxi-column dataField="pgrm_loyal_serv_patern_type" caption="Produits/Services"></dxi-column>
+              <dxi-column dataField="pgrm_loyal_serv_patern_val" [customizeText]="pointColumn_customizeText" caption="Point(s) gagne(s)"></dxi-column>
+              </dx-data-grid>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ./Produit par intervalle de prix -->
+        </div>
+        <footer class="page-footer">
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn type="button" [disabled]="false" color="primary" mdbWavesEffect cdkStepperPrevious>
+              <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Precedent
+            </button>
+            <button mdbBtn type="button" [disabled]="false" color="default" mdbWavesEffect cdkStepperNext>Suivant
+              <mdb-icon fas icon="magic" class="ml-1"></mdb-icon>
+            </button>
+           
+          </div>
+        </footer>
+      </div>
+  </cdk-step>
+  <cdk-step [editable]="true" [optional]="false">
+    <!-- using template -->
+    <ng-template cdkStepLabel>
+      <span>Magasin/Recompense</span>
+    </ng-template>
+   
+      <div class="container">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12">
+              <h2>Element de base de la recompense</h2>
+              <!-- Nom & Description  -->
+              <div class="form-group">
+                <label for="inputAddress">Nom de la recompense</label>
+                  <input mdbInput type="text" class="form-control" id="inputAddress" placeholder="Nom de la recompense">
+                  
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Description de la recompense</label>
+                  <input mdbInput type="text" class="form-control" id="inputAddress" placeholder="Description de la recompense">
+                  
+                </div>
+            
+          </div>
+          <div class="row">
+            <dx-scroll-view width="100%" height="100%">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 no-padding no-margin">
+              <div class="row no-padding no-margin">
+                <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 no-padding no-margin">
+                  <div class="panel panel-primary outer">
+                   
+                      <h3>
+                        Enceintes/Magasin de consommation de recompense
+                      </h3>
+                    <div class="panel-body">
+                      <!-- (onSelectionChanged)="SelectionChangedAddMarketEndDate($event)" -->
+                      <dx-data-grid [showColumnLines]="true"
+                        [dataSource]="list_trait_service_product_provider_mrk_place"
+                         [allowColumnResizing]="true"
+                        [columnAutoWidth]="true" [columnHidingEnabled]="true" [showRowLines]="true"
+                        [showBorders]="true">
+                        <dxo-load-panel [enabled]="true"></dxo-load-panel>
+                        <dxo-selection mode="single"></dxo-selection>
+                        <dxo-scrolling mode="virtual"></dxo-scrolling>
+                        <dxi-column dataField="srv_prod_prov_mrk_place_name" caption="Nom">
+                        </dxi-column>
+                        <dxi-column dataField="srv_prod_prov_mrk_place_type_lib" caption="Type">
+                        </dxi-column>
+                      </dx-data-grid>
+                    </div>
+                  </div>
+    
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 no-padding no-margin">
+    
+                  <div class="clearfix">
+                   
+                  </div>
+                  <div class="row no-padding no-margin">
+                    <div class="form-group col-md-12 col-xs-12 col-sm-12 col-lg-12 no-padding no-margin">
+                       <label for="inputCity">Date limite</label>
+                          <input mdbInput type="date" class="form-control" id="inputCity">
+                    </div>
+    
+                  </div>
+                  <div class="clearfix">
+                   
+                  </div>
+                  <div class="row no-padding no-margin">
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 no-padding no-margin">
+                      <dx-button type="danger" icon="fa fa-angle-double-left"></dx-button>
+                    </div>
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 no-padding no-margin">
+                      <dx-button type="success" icon="fa fa-angle-double-right"></dx-button>
+    
+                    </div>
+                  </div>
+                 
+                </div>
+                <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 no-padding no-margin">
+                  <div class="panel panel-primary outer">
+                    
+                      <h3>
+                        Enceintes/Magasin de consommation selectiones
+                      </h3>
+                    <div class="panel-body">
+                      <!-- (onSelectionChanged)="SelectionChangedToRemoveMarket2($event)" -->
+                      <dx-data-grid [showColumnLines]="true"
+                        [dataSource]="list_trait_program_loyality_reward_patern_mrk_place"
+                        [allowColumnResizing]="true" [columnAutoWidth]="true" [columnHidingEnabled]="true"
+                        [showRowLines]="true" [showBorders]="true">
+                        <dxo-load-panel [enabled]="true"></dxo-load-panel>
+                        <dxo-selection mode="single"></dxo-selection>
+                        <dxo-scrolling mode="virtual"></dxo-scrolling>
+                        <dxi-column dataField="srv_prod_prov_mrk_place_name" caption="Nom">
+                        </dxi-column>
+                      
+                        <dxi-column dataType="date" dataField="Rewrd_patern_pgm_mag_limit_date" caption="Date limite">
+                        </dxi-column>
+                      </dx-data-grid>
+                    </div>
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+            </dx-scroll-view>
+          </div>
+          </div>
+        </div>
+        <footer class="page-footer">
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn type="button" [disabled]="false" color="primary" mdbWavesEffect cdkStepperPrevious>
+              <mdb-icon fas icon="angle-double-left" class="mr-1"></mdb-icon>Precedent
+            </button>
+            <button mdbBtn type="button" [disabled]="false" color="default" mdbWavesEffect cdkStepperNext>Suivant
+              <mdb-icon fas icon="angle-double-right" class="ml-1"></mdb-icon>
+            </button>
+           
+          </div>
+        </footer>
+      </div>
+  </cdk-step>
+  <cdk-step [editable]="true" [optional]="false">
+    <ng-template cdkStepLabel>
+      <span>Recompense</span>
+    </ng-template>
+      <div class="container">
+        <div class="col-12">
+          Valeur de la recompense
+          Goods or disounts
+        </div>
+        <footer class="page-footer">
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn type="button" [disabled]="false" color="primary" mdbWavesEffect cdkStepperPrevious>
+              <mdb-icon fas icon="angle-double-left" class="mr-1"></mdb-icon>Precedent
+            </button>
+
+            <button mdbBtn type="button" color="danger" (click)="cdkStepper.reset()" mdbWavesEffect>
+              <mdb-icon fas icon="magic" class="mr-1"></mdb-icon>Reset
+            </button>
+           
+            <button mdbBtn type="button" [disabled]="false" color="default" mdbWavesEffect>Valider
+              <mdb-icon fas icon="chevron-circle-down" class="ml-1"></mdb-icon>
+            </button>
+          </div>
+        </footer>
+      </div>
+  </cdk-step>
+</my_stepper>
+
